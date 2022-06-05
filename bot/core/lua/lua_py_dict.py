@@ -2,7 +2,10 @@ from __future__ import annotations
 
 from typing import Any
 
-MAX_LUA_INT = 982688721935675392
+# Lua will automatically convert integers that are greater than 32 bits to
+# floats. To deal with inaccuracies caused by this, integers above 32 bits
+# are converted to strings.
+MAX_LUA_INT = pow(2, 32)
 
 
 class LuaPyDict(dict):  # type: ignore
